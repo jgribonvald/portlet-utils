@@ -18,11 +18,11 @@
  */
 package org.jasig.portlet.utils.jdbc;
 
-import java.util.Properties;
-
 import javax.management.MBeanServer;
 import javax.management.ObjectInstance;
 import javax.management.ObjectName;
+
+import java.util.Properties;
 
 import org.apache.tomcat.jdbc.pool.ConnectionPool;
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -685,4 +685,23 @@ public class TomcatDataSourceFactory extends AbstractFactoryBean<DataSource>
                 .setPropagateInterruptState(propagateInterruptState);
     }
 
+    @Override
+    public void setIgnoreExceptionOnPreLoad(boolean ignoreExceptionOnPreLoad) {
+        this.poolConfiguration.setIgnoreExceptionOnPreLoad(ignoreExceptionOnPreLoad);
+    }
+
+    @Override
+    public boolean isIgnoreExceptionOnPreLoad() {
+        return this.poolConfiguration.isIgnoreExceptionOnPreLoad();
+    }
+
+    @Override
+    public void setValidationQueryTimeout(int validationQueryTimeout) {
+        this.poolConfiguration.setValidationQueryTimeout(validationQueryTimeout);
+    }
+
+    @Override
+    public int getValidationQueryTimeout() {
+        return this.poolConfiguration.getValidationQueryTimeout();
+    }
 }
